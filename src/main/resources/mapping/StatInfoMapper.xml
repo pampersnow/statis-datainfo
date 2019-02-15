@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.statisdatainfo.dao.StatInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.example.statisdatainfo.entity.StatInfo" >
+    <id column="STATISTICSID" property="statisticsid" jdbcType="INTEGER" />
+    <result column="DOCID" property="docid" jdbcType="INTEGER" />
+    <result column="DOCTITLE" property="doctitle" jdbcType="VARCHAR" />
+    <result column="DOCCHANNEL" property="docchannel" jdbcType="INTEGER" />
+    <result column="DOCPUBTIME" property="docpubtime" jdbcType="TIMESTAMP" />
+    <result column="DOCCLICKDATE" property="docclickdate" jdbcType="DATE" />
+    <result column="DOCCLICKCOUNT" property="docclickcount" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    STATISTICSID, DOCID, DOCTITLE, DOCCHANNEL, DOCPUBTIME, DOCCLICKDATE, DOCCLICKCOUNT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from xwcmstatistics
+    where STATISTICSID = #{statisticsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xwcmstatistics
+    where STATISTICSID = #{statisticsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.statisdatainfo.entity.StatInfo" >
+    insert into xwcmstatistics (STATISTICSID, DOCID, DOCTITLE, 
+      DOCCHANNEL, DOCPUBTIME, DOCCLICKDATE, 
+      DOCCLICKCOUNT)
+    values (#{statisticsid,jdbcType=INTEGER}, #{docid,jdbcType=INTEGER}, #{doctitle,jdbcType=VARCHAR}, 
+      #{docchannel,jdbcType=INTEGER}, #{docpubtime,jdbcType=TIMESTAMP}, #{docclickdate,jdbcType=DATE}, 
+      #{docclickcount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.statisdatainfo.entity.StatInfo" >
+    insert into xwcmstatistics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="statisticsid != null" >
+        STATISTICSID,
+      </if>
+      <if test="docid != null" >
+        DOCID,
+      </if>
+      <if test="doctitle != null" >
+        DOCTITLE,
+      </if>
+      <if test="docchannel != null" >
+        DOCCHANNEL,
+      </if>
+      <if test="docpubtime != null" >
+        DOCPUBTIME,
+      </if>
+      <if test="docclickdate != null" >
+        DOCCLICKDATE,
+      </if>
+      <if test="docclickcount != null" >
+        DOCCLICKCOUNT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="statisticsid != null" >
+        #{statisticsid,jdbcType=INTEGER},
+      </if>
+      <if test="docid != null" >
+        #{docid,jdbcType=INTEGER},
+      </if>
+      <if test="doctitle != null" >
+        #{doctitle,jdbcType=VARCHAR},
+      </if>
+      <if test="docchannel != null" >
+        #{docchannel,jdbcType=INTEGER},
+      </if>
+      <if test="docpubtime != null" >
+        #{docpubtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="docclickdate != null" >
+        #{docclickdate,jdbcType=DATE},
+      </if>
+      <if test="docclickcount != null" >
+        #{docclickcount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.statisdatainfo.entity.StatInfo" >
+    update xwcmstatistics
+    <set >
+      <if test="docid != null" >
+        DOCID = #{docid,jdbcType=INTEGER},
+      </if>
+      <if test="doctitle != null" >
+        DOCTITLE = #{doctitle,jdbcType=VARCHAR},
+      </if>
+      <if test="docchannel != null" >
+        DOCCHANNEL = #{docchannel,jdbcType=INTEGER},
+      </if>
+      <if test="docpubtime != null" >
+        DOCPUBTIME = #{docpubtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="docclickdate != null" >
+        DOCCLICKDATE = #{docclickdate,jdbcType=DATE},
+      </if>
+      <if test="docclickcount != null" >
+        DOCCLICKCOUNT = #{docclickcount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where STATISTICSID = #{statisticsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.statisdatainfo.entity.StatInfo" >
+    update xwcmstatistics
+    set DOCID = #{docid,jdbcType=INTEGER},
+      DOCTITLE = #{doctitle,jdbcType=VARCHAR},
+      DOCCHANNEL = #{docchannel,jdbcType=INTEGER},
+      DOCPUBTIME = #{docpubtime,jdbcType=TIMESTAMP},
+      DOCCLICKDATE = #{docclickdate,jdbcType=DATE},
+      DOCCLICKCOUNT = #{docclickcount,jdbcType=INTEGER}
+    where STATISTICSID = #{statisticsid,jdbcType=INTEGER}
+  </update>
+</mapper>

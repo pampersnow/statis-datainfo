@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="header :: commonHeader(boot)">
+    <meta charset="utf-8"/>
+</head>
+<body>
+<div>
+    <table>
+        <tr>
+            <th>index</th>
+            <th>docchannel</th>
+            <th>doctype</th>
+            <th>doctitle</th>
+            <th>docpuburl</th>
+            <th>docpubtime</th>
+        </tr>
+        <tr th:each="user,iterStat: ${datalist}" >
+            <td th:text="${iterStat.index}"></td>
+            <td th:text="${user.docchannel}"></td>
+            <td th:text="${user.doctype}"></td>
+            <td th:text="${user.doctitle}"></td>
+            <td th:text="${user.docpuburl}"></td>
+            <td th:text="${#dates.format(user.docpubtime, 'yyyy-MM-dd')}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

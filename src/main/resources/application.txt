@@ -1,0 +1,25 @@
+#若不这样写,传入mysql中的sql语句中文就是???
+spring.datasource.url = jdbc:mysql://localhost:3306/trsinfostatis?useSSL=false&useUnicode=true&characterEncoding=utf8
+spring.datasource.username = root
+spring.datasource.password =1234
+spring.datasource.driverClassName =com.mysql.jdbc.Driver
+#热启动,不重启显示更新部分
+spring.thymeleaf.cache = false
+#映射文件，必须放在resources下
+mybatis.mapper-locations=classpath:/mapper/*.xml
+#端口
+server.port=8889 
+#tomcat 默认是不用项目名即可访问，http://localhost:8888/请求页面
+#添加如下配置后，可以向sprignmvc一样加项目名访问
+#server.servlet.context-path=/dd
+# session最大超时时间(分钟)，默认为30
+server.session-timeout=60
+# 该服务绑定IP地址，启动服务器时如本机不是该IP地址则抛出异常启动失败，只有特殊需求的情况下才配置
+# server.address=192.168.16.11
+
+#分页插件
+pagehelper:
+helperDialect: mysql
+reasonable: true
+supportMethodsArguments: true 
+params: count=countSql
